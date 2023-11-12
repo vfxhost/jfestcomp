@@ -10,14 +10,15 @@ CREATE TABLE IF NOT EXISTS `#__festival_project` (
 	`published` TINYINT(3) NOT NULL DEFAULT 1,
 	`created_by` INT(10) unsigned NOT NULL DEFAULT 0,
 	`modified_by` INT(10) unsigned NOT NULL DEFAULT 0,
-	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`modified` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`checked_out` int(11) unsigned NOT NULL DEFAULT 0,
-	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`checked_out_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`version` INT(10) unsigned NOT NULL DEFAULT 1,
 	`hits` INT(10) unsigned NOT NULL DEFAULT 0,
 	`access` INT(10) unsigned NOT NULL DEFAULT 0,
 	`ordering` INT(11) NOT NULL DEFAULT 0,
+	`rules` TEXT NOT NULL DEFAULT 0,
 	PRIMARY KEY  (`id`),
 	KEY `idx_project_title` (`project_title`),
 	KEY `idx_alias` (`alias`),
@@ -27,5 +28,3 @@ CREATE TABLE IF NOT EXISTS `#__festival_project` (
 	KEY `idx_modifiedby` (`modified_by`),
 	KEY `idx_state` (`published`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
-
-
